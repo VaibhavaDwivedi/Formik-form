@@ -58,9 +58,12 @@ function SignIn() {
             placeholder="Enter Password"
             required
           />
-          <Link className="mt-4" to={"/"}>
-            <Button>Go Back</Button>
-          </Link>
+          <Button type="submit" className="mt-4 self-center">
+            SignIn
+          </Button>
+          <Button type="button" className="self-start">
+            <Link to={"/"}>Go Back</Link>
+          </Button>
         </Form>
       </Formik>
     </div>

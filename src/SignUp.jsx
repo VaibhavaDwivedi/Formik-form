@@ -35,12 +35,13 @@ function SignUp() {
     values,
     errors,
     touched,
+    isValid,
   } = useFormik({
     initialValues: {
-      fullname: " ",
-      email: " ",
-      newPassword: " ",
-      currentPassword: " ",
+      fullname: "",
+      email: "",
+      newPassword: "",
+      currentPassword: "", //never give space in this else it will create error
     },
     onSubmit: SignUpApi,
     validationSchema: signUpSchema,
@@ -64,7 +65,7 @@ function SignUp() {
           onBlur={handleBlur}
           touched={touched.fullname}
           error={errors.fullname}
-          autoComplete="fullname"
+          autoComplete="Full name"
           placeholder="Enter Full Name"
           required
         />
@@ -107,8 +108,13 @@ function SignUp() {
           placeholder="Re-enter the new Password"
           required
         />
-        <Button type="submit" onClick={handleSubmit} className="self-center">
-          Submit
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          className="self-center"
+          disabled={!isValid}
+        >
+          SignUp
         </Button>
         <div className="flex flex-row justify-between">
           <Link to={"/"}>
@@ -116,9 +122,9 @@ function SignUp() {
           </Link>
 
           {/*this reset link is not working need to check this */}
-          {/*<Button onClick={resetForm} type="button">
+          <Button onClick={resetForm} type="button">
             Reset
-          </Button>*/}
+          </Button>
         </div>
       </form>
     </div>

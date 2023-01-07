@@ -3,7 +3,8 @@ import React from "react";
 //This is a simple customized Input component although it is not much good but this is only for the sample of work of UseFormik
 //have use this for only to show the work of useFromik
 
-function Input({ id, label, value, touched, error, className, ...rest }) {
+//give only that value specifically which has some other use apart from input tag
+function Input({ id, label, touched, error, className, ...rest }) {
   let errorClass = "border-blue-500 ";
   if (touched && error) {
     errorClass = "border-red-800";

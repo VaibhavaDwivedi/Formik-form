@@ -32,7 +32,7 @@ function newForm() {
     onSubmit: callLoginApi,
     validationSchema: loginSchema,
   });
-  console.log("dirty is", dirty);
+  //console.log("dirty is", dirty);
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-gray-100 ">
