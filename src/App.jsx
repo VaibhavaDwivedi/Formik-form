@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Forms from "./Forms";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import NotFound from "./NotFound.png";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Forms />}></Route>
           <Route path="/SignIn" element={<SignIn />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>
     </div>
