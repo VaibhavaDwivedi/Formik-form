@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import Input from "./Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Eye, EyeOff } from "lucide-react";
+
 function SignUp() {
+
+  const [password, setPassword] = useState(true);
+
   function SignUpApi(values) {
     console.log(
       "Sign up api is called",
@@ -48,6 +53,10 @@ function SignUp() {
     validateOnMount: true,
   });
 
+  const handlePassword = () => {
+    setPassword(!password)
+  }
+
   return (
     <div className="flex flex-col h-screen justify-center items-center w-full">
       <h1>This one is with the use of useFormik</h1>
@@ -85,7 +94,7 @@ function SignUp() {
         <Input
           value={values.newPassword}
           id="newPswd"
-          type="password"
+          type={password?'password':'text'}
           name="newPassword"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -95,6 +104,7 @@ function SignUp() {
           placeholder="Create a new Password"
           required
         />
+        <button onClick={handlePassword}>{password?<EyeOff/>:<Eye/>}</button>
         <Input
           value={values.currentPassword}
           id="Pswd"

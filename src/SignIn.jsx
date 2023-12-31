@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import FieldInput from "./FieldInput";
+import { Eye } from "lucide-react";
+import { EyeOff } from "lucide-react";
 
 function SignIn() {
+  const [password,setPassword] = useState(true);
   function callSignIn(initialValues) {
     console.log(
       "callSignIn called",
@@ -23,6 +26,9 @@ function SignIn() {
     email: "",
     password: "",
   };
+  const handlePassword = () =>{
+    setPassword(!password)
+  }
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-full">
@@ -52,12 +58,13 @@ function SignIn() {
             label="Password"
             id="pswd"
             name="password"
-            type="password"
+            type={password?'password':'text'}
             autoComplete="Current-pasword"
             className="rounded-t-none"
             placeholder="Enter Password"
             required
           />
+          <button onClick={handlePassword}>{password?<EyeOff/>:<Eye/>}</button>
           <Button type="submit" className="mt-4 self-center">
             SignIn
           </Button>
